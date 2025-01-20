@@ -1,0 +1,150 @@
+.containerCadastro {
+    display: flex;
+    flex-direction: row; /* Layout lado a lado */
+    align-items: center; /* Centraliza os itens verticalmente */
+    justify-content: center; /* Centraliza os itens horizontalmente */
+    gap: 10px; /* Espaçamento entre os elementos */
+    min-height: 100vh; /* Garante que a altura mínima seja de 100% da tela */
+    padding: 0;
+    margin: 0;
+    margin-left: 5%;
+    width: 95%;
+}
+
+
+.tabButton{
+    padding: 2px; /* Tamanho do botão */
+    width: 10%;
+    height: auto;
+    left: 5%;
+    margin-top: 1%;
+    margin-left: 6%;
+    font-size: 1.2rem; /* Tamanho da fonte */
+    font-weight: 300; /* Peso da fonte */
+    text-transform: uppercase; /* Letras maiúsculas */
+    border-radius: 30px; /* Bordas arredondadas */
+    border: 2px solid transparent; /* Borda invisível por padrão */
+    background-color: var(--green-300); /* Cor de fundo */
+    color: white; /* Cor do texto */
+    cursor: pointer; /* Cursor de ponteiro ao passar o mouse */
+    transition: all 0.3s ease; /* Transição suave para efeitos */
+}
+
+/* Efeito de hover */
+.tabButton:hover {
+    background-color: var(--white); /* Cor de fundo ao passar o mouse */
+    border-color: var(--green-300); /* Cor da borda ao passar o mouse */
+    transform: translateY(-1px); /* Levanta o botão ao passar o mouse */
+  }
+  
+  /* Efeito de foco (ao clicar) */
+  .tabButton:focus {
+    outline: none; /* Remove a borda padrão de foco */
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.8); /* Sombra suave de foco */
+    background-color: var(--white);
+    color: var(--green-300);
+  }
+
+.textCadastro {
+    flex: 1; /* A div de texto ocupa uma parte proporcional */
+    width: 50%; /* Largura máxima da div de texto */
+    max-width: 600px; /* Largura máxima para a div de texto */
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: clamp(1.3rem, 6vw, 2rem); /* Tamanho de fonte responsivo */
+    color: black;
+    text-align: center; /* Alinha o texto ao centro */
+    margin: 8%
+}
+
+.formularioCadastro {
+    background-color: #fff;
+    padding: 2rem;
+    flex: 1; /* Faz o formulário ocupar mais espaço */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px; /* Limita a largura máxima */
+    width: 100%;
+    margin-right: 5%;
+}
+
+.campoFormulario {
+    margin-bottom: 1.2rem;
+}
+
+.labelFormulario {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.filters input {
+    margin: 5px;
+    margin-bottom: 2%;
+    padding: 5px;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 200px;
+}
+
+.inputFormulario,
+.selectFormulario {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    color: #333;
+}
+
+.selectFormulario {
+    cursor: pointer;
+}
+
+.botaoSubmitCadastro {
+    background: var(--green-300);
+    color: var(--white);
+    border: 1px solid var(--green-300);
+    border-radius: 50px;
+    height: 50px;
+    width: 30%;
+    padding: 0 1.5rem;
+    font-weight: bold;
+    font-size: 1.5rem;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.2s, background-color 0.2s;
+    margin-top: 5%;
+    align-self: right;  /* Centraliza o botão dentro do contêiner */
+}
+
+.botaoSubmitCadastro:hover {
+    background-color: var(--white);
+    color: var(--green-300);
+}
+
+
+@media (max-width: 768px) {
+    .containerCadastro {
+        flex-direction: column; /* Empilha os elementos em telas pequenas */
+        align-items: center; /* Centraliza verticalmente em telas pequenas */
+        justify-content: center; /* Centraliza horizontalmente em telas pequenas */
+    }
+    
+    .formularioCadastro {
+        padding: 1.5rem;
+        width: 100%;
+    }
+
+    .tituloCadastro {
+        font-size: 1.5rem;
+    }
+
+    .textCadastro {
+        width: 100%; /* Ajusta a largura da div de texto */
+    }
+}

@@ -1,0 +1,159 @@
+
+/* Estilização do container do formulário */
+.form-container {
+    display: flex;
+    flex-direction: row;  /* Organiza os elementos em linha (ao lado) */
+    justify-content: space-between;  /* Centraliza o conteúdo horizontalmente */
+    align-items: center;  /* Centraliza o conteúdo verticalmente */
+    min-height: 100vh;  /* Garante que o contêiner ocupe toda a altura da tela */
+    margin-top: 0;
+    margin: 0;
+    gap: 50px;  /* Espaçamento entre o texto e o formulário */
+    width: 90%;
+    margin-left: 10%;
+}
+
+/* Container de texto */
+.text-container {
+    justify-content: center;
+    align-items: center;
+    text-align: justify;
+    max-width: 500px;
+    flex: 1;
+    font-family: Garamond;
+    font-size: 1.3rem;
+    margin-left: 10%;
+}
+
+/* Estilo para a lista não ordenada (ul) */
+.text-container ul {
+    list-style-type: disc; /* Certifica-se de que os bullet points aparecem */
+    padding-left: 20px; /* Adiciona um recuo à esquerda para os bullet points */
+}
+
+/* Estilo para os itens da lista (li) */
+.text-container ul li {
+    font-size: 1.3rem; /* Ajusta o tamanho da fonte, se necessário */
+    margin-bottom: 8px; /* Espaçamento entre os itens */
+}
+
+/* Estilização do formulário */
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 500px;  /* Largura máxima proporcional */
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    margin-right: 15%;
+}
+
+/* Estilização dos grupos de campo */
+.form-group {
+    margin-bottom: 15px;
+    font-size: 1rem;
+}
+
+.form-group label {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+/* Estilização de campos com máscara */
+.input-mask {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.input-mask:focus {
+    border-color: #4CAF50;
+    outline: none;
+    background-color: #f0fff0;
+}
+
+/* Estilização do grupo de campos em linha */
+.form-group-inline {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* Estilização do grupo de input */
+.inline-group {
+    flex: 1;
+    font-size: 1rem;
+}
+
+/* Estilização do grupo de radio buttons */
+.radio-group {
+    display: flex;
+    flex-direction: column;  /* Alinha os radio buttons verticalmente */
+    gap: 10px;  /* Espaço entre os radio buttons */
+    margin-top: 10px;
+}
+
+/* Estilo do label para os radio buttons */
+.radio-group label {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease; /* Transição suave ao passar o mouse */
+}
+
+input[type="radio"] {
+    content: '';
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-right: 10px;
+    background-color: white;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Alinha o botão à direita */
+.form button {
+    background: var(--green-300);
+    color: var(--white);
+    border: 1px solid var(--green-300);
+    border-radius: 50px;
+    height: 60px;
+    width: 40%;
+    padding: 0 1.5rem;
+    font-weight: bold;
+    font-size: 1.5rem;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.2s, background-color 0.2s;
+    margin-top: 5%;
+    align-self: center;  /* Centraliza o botão dentro do contêiner */
+}
+
+button:hover {
+    background-color: var(--white);
+    color: var(--green-300);
+}
+
+/* Responsividade para telas pequenas */
+@media (max-width: 800px) {
+    .form-container {
+        flex-direction: column;  /* Em telas menores, coloca o texto acima do formulário */
+        gap: 20px;  /* Reduz o espaço entre os elementos */
+    }
+
+    .text-container {
+        max-width: 100%;
+    }
+
+    .form {
+        max-width: 100%;
+    }
+}

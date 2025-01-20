@@ -1,0 +1,79 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}
+  
+  .sidebar_navigation {
+    display: inline;
+    min-height: 100vh;
+    height: 100vh;
+    width: 70px;
+    background-color: #00B37E;
+    float: left;
+    position: fixed;
+  }
+  
+  .sidebar_navigation ul {
+    font-size: 1.2rem;
+    text-align: center;
+    color: black;
+  }
+  
+  .sidebar_navigation ul li {
+    padding: 28px 0;
+    cursor: pointer;
+    transition: all ease-out 120ms;
+    position: relative;
+  }
+  
+  .sidebar_navigation ul li i {
+    display: block;
+    font-size: 24px;
+    transition: all ease 450ms;
+  }
+  
+  .sidebar_navigation ul li .tooltip {
+    display: inline-block;
+    position: absolute;
+    background-color: #abffcc;
+    padding: 8px 15px;
+    border-radius: 3px;
+    margin-top: -26px;
+    left: 90px;
+    opacity: 0;
+    visibility: hidden;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+    transition: all ease 120ms;
+  }
+  
+  .sidebar_navigation ul li .tooltip:before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: -4px;
+    top: 10px;
+    transform: rotate(45deg);
+    width: 10px;
+    height: 10px;
+    background-color: inherit;
+  }
+  
+  .sidebar_navigation ul li:hover {
+    background-color: #abffcc;
+  }
+  
+  .sidebar_navigation ul li:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+  }
+  
+  .sidebar_navigation ul li.active {
+    background-color: black;
+  }
+  
+  .sidebar_navigation ul li.active i {
+    color: #98D7EC;
+  }
+  
