@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHdd, faNewspaper, faHome, faUser, faUserCog } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
-import MenuCollaborator from './MenuCollaborator';
+
 
 const roleBasedMenu = {
   ADMIN: [
@@ -20,7 +20,7 @@ const roleBasedMenu = {
     { icon: faUserCog, label: 'Editar Usuários', path: '/VisualizarUsuarios' },
   ],
   COLLABORATOR: [
-    { icon: faHdd, label: 'Registros', path: '/Registros' },
+    { icon: faHdd, label: 'Registros dos Colaboradores', path: '/RegistrosOperadores' },
   ],
 };
 

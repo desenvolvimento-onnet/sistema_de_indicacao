@@ -3,9 +3,11 @@ import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom'; // Hooks para manipular parâmetros da URL e navegação
 import styles from './EditPage.module.css'; // Importa estilos específicos
 import InputMask from 'react-input-mask'; // Biblioteca para mascarar entradas, como CPF e telefone
-import { LiaCloneSolid } from 'react-icons/lia';
+import Modal from 'react-modal';
+import ModalEditarIndicacao from '../../components/ModalEditarIndicacao';
 
-// Componente principal para a edição de dados
+Modal.setAppElement('#root');
+
 const EditPage = () => {
     const { id } = useParams(); // Obtém o ID da URL para buscar o registro correspondente
     const navigate = useNavigate(); // Hook para redirecionar o usuário após ações

@@ -1,0 +1,70 @@
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Fundo semitransparente */
+    z-index: 1000; /* Certifique-se de que o modal fique acima de outros elementos */
+  }
+  
+  .modalContent {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 50%;
+    height: 95%;
+    max-width: 580px; /* Limita o tamanho máximo */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1001;
+  }
+
+  .campoFormulario{
+    margin-bottom: 15px;
+    font-size: 1rem;
+  }
+
+  .labelFormulario{
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 5px;
+    color: black;
+  }
+
+  /* Estilização do grupo de campos em linha */
+.form-group-inline {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+  
+  .botaoSalvarEdicao{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--green-300);
+    color: white;
+    border: 1px solid var(--green-300);
+    border-radius: 10px;
+    height: 40px;
+    width: 100%;
+    padding: 0 1.5rem;
+    font-weight: bold;
+    font-size: 1.5rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-decoration: none;
+    cursor: pointer;
+    margin-top: 8%;
+    transition: color 0.2s, background-color 0.25;
+    align-self: right;
+  }
+  
+  .botaoSalvarEdicao:hover{
+    background-color: white;
+    color: var(--green-300);
+  }
+  

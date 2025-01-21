@@ -60,7 +60,6 @@
     display: block;
     font-size: 1rem;
     margin-bottom: 5px;
-    color: black;
 }
 
 /* Estilização de campos com máscara */
@@ -74,6 +73,7 @@
 }
 
 .input-mask:focus {
+    border-color: #4CAF50;
     outline: none;
     background-color: #f0fff0;
 }
@@ -97,7 +97,7 @@
     color: var(--white);
     border: 1px solid var(--green-300);
     border-radius: 50px;
-    height: 45px;
+    height: 60px;
     width: 40%;
     padding: 0 1.5rem;
     font-weight: bold;

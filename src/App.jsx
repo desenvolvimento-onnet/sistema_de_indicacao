@@ -8,6 +8,7 @@ import CadastroUser from './Pages/CadastroUser/CadastroUser';
 import Teste from './Pages/Teste/Teste';
 import EditarCadastro from './components/EditarCadastro';
 import PrivateRoute from './components/PrivateRoute';
+import RegistrosOperadores from './Pages/RegistrosOperadores/RegistrosOperadores';
 
 function App() {
   return (
@@ -33,6 +34,14 @@ function App() {
           element={
             <PrivateRoute>
               <Registros />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/RegistrosOperadores"
+          element={
+            <PrivateRoute>
+              <RegistrosOperadores />
             </PrivateRoute>
           }
         />
