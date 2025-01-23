@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import styles from './EditarCadastro.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
@@ -21,12 +21,12 @@ const EditarCadastro = () => {
     const [usersPerPage] = useState(8);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedUser, setSelectedUser] = useState(null);
-    const [saving, setSaving] = useState(false);  // Estado para controle de salvamento
+    const [saving, setSaving] = useState(false); // Controle de salvamento
 
-    const navigate = useNavigate();
     const roles = ['ADMIN', 'MANAGER', 'COLLABORATOR'];
 
-    useEffect(() => {
+    // Função para buscar usuários
+    const fetchUsers = () => {
         setLoading(true);
         fetch('http://localhost:3333/collaborators', {
             method: 'GET',
@@ -35,14 +35,14 @@ const EditarCadastro = () => {
                 Authorization: `Bearer ${sessionStorage.getItem('authToken')}`,
             },
         })
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error('Erro na requisição!');
-                }
-                return response.json();
+            .then(async (response) => {
+                if (!response.ok) throw new Error('Erro na requisição!');
+                const text = await response.text();
+                return text ? JSON.parse(text) : null;
             })
             .then((data) => {
-                setUsers(data ? data.data : []);
+                if (!data || !data.data) throw new Error('Dados inválidos recebidos!');
+                setUsers(data.data);
                 setLoading(false);
             })
             .catch((error) => {
@@ -50,6 +50,11 @@ const EditarCadastro = () => {
                 setError('Erro ao carregar os dados. Tente novamente mais tarde.');
                 setLoading(false);
             });
+    };
+
+    // Carrega os dados ao montar o componente
+    useEffect(() => {
+        fetchUsers();
     }, []);
 
     const filteredUsers = users.filter((user) =>
@@ -71,7 +76,7 @@ const EditarCadastro = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         setSaving(true);
-
+    
         const updatedUser = {
             id: selectedUser.id,
             name: e.target.name.value,
@@ -79,13 +84,14 @@ const EditarCadastro = () => {
             email: e.target.email.value,
             password: e.target.password.value,
             role: e.target.role.value,
+            active: selectedUser.active,
         };
-
+    
         fetch(`http://localhost:3333/collaborators/${selectedUser.id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${sessionStorage.getItem('authToken')}`,
+                Authorization: `Bearer ${sessionStorage.getItem('authToken')}`,
             },
             body: JSON.stringify(updatedUser),
         })
@@ -93,21 +99,16 @@ const EditarCadastro = () => {
                 if (!response.ok) throw new Error('Erro ao salvar os dados!');
                 return response.json();
             })
-            .then(() => {
-                setUsers((prevUsers) =>
-                    prevUsers.map((user) =>
-                        user.id === updatedUser.id ? updatedUser : user
-                    )
-                );
-                setIsModalOpen(false);
-                setSaving(false);
-            })
             .catch((error) => {
-                console.error(error);
+                console.error('Erro ao salvar:', error);
+            })
+            .finally(() => {
+                setIsModalOpen(false); // Fecha o modal
                 setSaving(false);
+                window.location.reload(); // Recarrega a página
             });
-            console.log('Dados: ', updatedUser);
     };
+    
 
     return (
         <div>
@@ -169,6 +170,9 @@ const EditarCadastro = () => {
                             <button
                                 onClick={() => setCurrentPage(1)}
                                 disabled={currentPage === 1}
+                                className={`${styles.pageButton} ${
+                                    currentPage === 1 ? styles.disabledButton : ''
+                                }`}
                             >
                                 &laquo;
                             </button>
@@ -176,7 +180,9 @@ const EditarCadastro = () => {
                                 <button
                                     key={index + 1}
                                     onClick={() => setCurrentPage(index + 1)}
-                                    className={currentPage === index + 1 ? styles.active : ''}
+                                    className={currentPage === index + 1 
+                                        ? `${styles.activePage} ${styles.pageButton}` 
+                                        : styles.pageButton}
                                 >
                                     {index + 1}
                                 </button>
@@ -184,6 +190,9 @@ const EditarCadastro = () => {
                             <button
                                 onClick={() => setCurrentPage(totalPages)}
                                 disabled={currentPage === totalPages}
+                                className={`${styles.pageButton} ${
+                                    currentPage === totalPages ? styles.disabledButton : ''
+                                }`}
                             >
                                 &raquo;
                             </button>
@@ -195,6 +204,7 @@ const EditarCadastro = () => {
                 isModalOpen={isModalOpen}
                 setIsModalOpen={setIsModalOpen}
                 selectedUser={selectedUser}
+                setSelectedUser={setSelectedUser}
                 handleSubmit={handleSubmit}
                 saving={saving}
                 roles={roles}

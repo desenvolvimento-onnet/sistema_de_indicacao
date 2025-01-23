@@ -32,21 +32,14 @@ const ModalEditarIndicacao = ({
         </div>
         <div className={styles.campoFormulario}>
           <label className={styles.labelFormulario}>Quem indicou:</label>
-          <select
+          <input
             className={styles.inputFormulario}
             name="indicatedBy"
             defaultValue={selectedIndication?.indicatedBy || ''}
+            readOnly
             required
-          >
-            <option value="" disabled>
-              Selecione um colaborador
-            </option>
-            {collaborators.map((collaborator) => (
-              <option key={collaborator.id} value={collaborator.name}>
-                {collaborator.name}
-              </option>
-            ))}
-          </select>
+          />
+          
         </div>
         <div className={styles['form-group-inline']}>
           <div className={styles.campoFormulario}>

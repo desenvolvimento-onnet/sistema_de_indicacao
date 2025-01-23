@@ -1,70 +1,143 @@
 .modalOverlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Fundo semitransparente */
-    z-index: 1000; /* Certifique-se de que o modal fique acima de outros elementos */
-  }
-  
-  .modalContent {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    width: 50%;
-    height: 95%;
-    max-width: 580px; /* Limita o tamanho máximo */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    z-index: 1001;
-  }
-
-  .campoFormulario{
-    margin-bottom: 15px;
-    font-size: 1rem;
-  }
-
-  .labelFormulario{
-    display: block;
-    font-size: 1rem;
-    margin-bottom: 5px;
-    color: black;
-  }
-
-  /* Estilização do grupo de campos em linha */
-.form-group-inline {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6); /* Fundo mais escuro */
+  z-index: 1000;
+  backdrop-filter: blur(5px); /* Adiciona desfoque ao fundo */
+  animation: fadeIn 0.3s ease-in-out; /* Animação de entrada */
 }
-  
-  .botaoSalvarEdicao{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--green-300);
-    color: white;
-    border: 1px solid var(--green-300);
-    border-radius: 10px;
-    height: 40px;
-    width: 100%;
-    padding: 0 1.5rem;
-    font-weight: bold;
-    font-size: 1.5rem;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    text-decoration: none;
-    cursor: pointer;
-    margin-top: 8%;
-    transition: color 0.2s, background-color 0.25;
-    align-self: right;
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
-  
-  .botaoSalvarEdicao:hover{
-    background-color: white;
-    color: var(--green-300);
+  to {
+    opacity: 1;
   }
-  
+}
+
+.modalContent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 90%; /* Mais responsivo em telas pequenas */
+  height: auto;
+  min-height: 30%;
+  max-width: 800px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1001;
+  animation: slideIn 0.3s ease-in-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translate(-50%, -60%);
+  }
+  to {
+    transform: translate(-50%, -50%);
+  }
+}
+
+.campoFormulario {
+  margin-bottom: 20px;
+  font-size: 1rem;
+}
+
+.campoFormulario select {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  color: #333;
+  transition: border-color 0.2s;
+}
+
+.campoFormulario select:focus {
+  border-color: var(--green-300);
+  outline: none;
+}
+
+.labelFormulario {
+  display: block;
+  font-size: 1rem;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #444;
+}
+
+.form-group-inline {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap; /* Melhor para dispositivos menores */
+}
+
+.botaoSalvarEdicao {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--green-300);
+  color: white;
+  border: 1px solid var(--green-300);
+  border-radius: 8px;
+  height: 45px;
+  width: 100%;
+  max-width: 200px; /* Define um tamanho máximo */
+  padding: 0 1.5rem;
+  font-weight: bold;
+  font-size: 1.2rem;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  text-decoration: none;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: all 0.3s ease;
+}
+
+.botaoSalvarEdicao:hover {
+  background-color: white;
+  color: var(--green-300);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Media Queries para telas menores */
+@media (max-width: 768px) {
+  .modalContent {
+    width: 95%; /* Mais estreito para dispositivos menores */
+    height: 50%;
+    padding: 1.5rem; /* Reduz o padding */
+  }
+
+  .form-group-inline {
+    flex-direction: column; /* Alinha os itens em coluna */
+    gap: 15px;
+  }
+
+  .botaoSalvarEdicao {
+    font-size: 1rem;
+    max-width: 100%; /* Remove o tamanho máximo fixo */
+  }
+}
+
+@media (max-width: 480px) {
+  .modalContent {
+    padding: 1rem; /* Padding menor em telas muito pequenas */
+  }
+
+  .campoFormulario select {
+    font-size: 0.9rem;
+    padding: 0.6rem;
+  }
+
+  .botaoSalvarEdicao {
+    font-size: 0.9rem;
+    padding: 0 1rem;
+  }
+}

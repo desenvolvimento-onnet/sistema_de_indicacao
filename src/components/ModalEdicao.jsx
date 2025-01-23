@@ -2,11 +2,19 @@ import React from 'react';
 import Modal from 'react-modal';
 import styles from './Modal.module.css';
 
-const UserEditModal = ({ isModalOpen, setIsModalOpen, selectedUser, handleSubmit, saving, roles }) => {
+const ModalEdicao = ({
+    isModalOpen,
+    setIsModalOpen,
+    selectedUser,
+    handleSubmit,
+    saving,
+    roles,
+    setSelectedUser,
+}) => {
     return (
         <Modal
             isOpen={isModalOpen}
-            onRequestClose={() => setIsModalOpen(false)}
+            onRequestClose={() => setIsModalOpen(false)} // Fecha o modal
             overlayClassName={styles.modalOverlay}
             className={styles.modalContent}
         >
@@ -62,15 +70,33 @@ const UserEditModal = ({ isModalOpen, setIsModalOpen, selectedUser, handleSubmit
                         ))}
                     </select>
                 </div>
-                <button type="submit" className={styles.botaoSalvarEdicao} disabled={saving} onClick={() => {
-                    window.location.reload();
-                }}>
+                <div className={styles.campoFormulario}>
+                    <label className={styles.labelFormulario}>Usuário ativo:</label>
+                    <label className={styles.switch}>
+                        <input
+                            type="checkbox"
+                            name="active"
+                            checked={selectedUser?.active || false}
+                            onChange={(e) =>
+                                setSelectedUser({
+                                    ...selectedUser,
+                                    active: e.target.checked,
+                                })
+                            }
+                        />
+                        <span className={styles.slider}></span>
+                    </label>
+                </div>
+                <button
+                    type="submit"
+                    className={styles.botaoSalvarEdicao}
+                    disabled={saving}
+                >
                     {saving ? 'Salvando...' : 'Salvar'}
-
                 </button>
             </form>
         </Modal>
     );
 };
 
-export default UserEditModal;
+export default ModalEdicao;

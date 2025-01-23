@@ -4,8 +4,10 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* Fundo semitransparente */
-  z-index: 1000; /* Certifique-se de que o modal fique acima de outros elementos */
+  background: rgba(0, 0, 0, 0.6); /* Fundo mais escuro */
+  z-index: 1000;
+  backdrop-filter: blur(5px); /* Adiciona desfoque ao fundo */
+  animation: fadeIn 0.3s ease-in-out; /* Animação de entrada */
 }
 
 .modalContent {
@@ -22,18 +24,16 @@
   z-index: 1001;
 }
 .campoFormulario{
-  margin-bottom: 1.2rem;
-  margin: 5px;
-  padding: 6px;
+  margin-bottom: 20px;
+  font-size: 1rem;
 }
 
 .labelFormulario{
-  font-size: 1rem;
-  font-weight: bold;
-  color: black;
   display: block;
-  margin-bottom: 0.5rem;
-  font-size: 1.1rem;
+  font-size: 1rem;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #444;
 }
 
 .inputFormulario, 
@@ -48,6 +48,52 @@
 
 .selectFormulario{
   cursor: pointer;
+}
+
+.switch{
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input{
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider{
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: red;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.slider:before{
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+/*Mudar a cor do botão quando ativo*/
+input:checked + .slider{
+  background-color: #40f249;
+}
+
+input:checked + .slider:before{
+  transform: translateX(26px);
 }
 
 .botaoSalvarEdicao{
@@ -74,4 +120,6 @@
 .botaoSalvarEdicao:hover{
   background-color: white;
   color: var(--green-300);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
+

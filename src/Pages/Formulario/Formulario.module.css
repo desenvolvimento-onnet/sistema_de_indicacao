@@ -11,6 +11,7 @@
     gap: 50px;  /* Espaçamento entre o texto e o formulário */
     width: 90%;
     margin-left: 10%;
+    /* background-color: #f7f9fc; */
 }
 
 /* Container de texto */
@@ -46,7 +47,7 @@
     padding: 20px;
     border: 1px solid #ddd;
     border-radius: 8px;
-    background-color: #f9f9f9;
+    background-color: #fff;
     margin-right: 15%;
 }
 
@@ -59,23 +60,26 @@
 .form-group label {
     display: block;
     font-size: 1rem;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
     color: black;
+    font-weight: bold;
 }
 
 /* Estilização de campos com máscara */
 .input-mask {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     font-size: 1rem;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 8px;
     box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .input-mask:focus {
     outline: none;
-    background-color: #f0fff0;
+    border-color: #00B37E;
+    box-shadow: 0 0 6px #00B37E;
 }
 
 /* Estilização do grupo de campos em linha */
@@ -83,6 +87,7 @@
     display: flex;
     justify-content: space-between;
     gap: 20px;
+    flex-wrap: wrap;
 }
 
 /* Estilização do grupo de input */

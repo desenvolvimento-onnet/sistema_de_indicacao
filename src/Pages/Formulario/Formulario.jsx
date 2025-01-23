@@ -14,6 +14,7 @@ const Formulario = () => {
         district: '',
         street: '',
         number: '',
+        status: '',
     });
 
     const [options, setOptions] = useState([]); // Estado para armazenar as opções do select
@@ -239,6 +240,27 @@ const Formulario = () => {
                                     {collaborator.name}
                                 </option>
                             ))}
+                        </select>
+                    </div>
+
+                    {/* Select de status */}
+                    <div className={styles['form-group']}>
+                        <label htmlFor="status">Situação da Indicação:</label>
+                        <select
+                            id="status"
+                            name="status"
+                            className={styles['input-mask']}
+                            value={formData.status}
+                            onChange={handleChange}
+                            required
+                        >
+                            <option value="" disabled>
+                                Selecione um Status
+                            </option>
+                            <option value="PENDING">PENDING</option>
+                            {/* <option value="ACCEPT">ACCEPT</option>
+                            <option value="DECLINED">DECLINED</option>
+                            <option value="COMPLETED">COMPLETED</option> */}
                         </select>
                     </div>
 

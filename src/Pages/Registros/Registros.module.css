@@ -1,25 +1,41 @@
 .container {
-    padding: 10px;
-    font-family: Arial, sans-serif;
+    padding: 20px;
+    font-family: 'Roboto', sans-serif;
+    /* background-color: #f7f9fc; */
     overflow: auto;
+    height: 100%;
 }
 
 h1 {
     text-align: center;
-    margin-bottom: 20px;
-    color: black;
+    color: #333;
+    font-size: 2rem;
     margin-top: 1%;
+    margin-bottom: 20px;
+}
+
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 10px;
+    margin-bottom: 20px;
+    margin-left: 6%;
 }
 
 .filters input {
-    margin: 5px;
-    margin-bottom: 2%;
-    margin-left: 5%;
-    padding: 5px;
     padding: 10px;
     font-size: 1rem;
+    border: 1px solid #ddd;
     border-radius: 5px;
-    width: 200px;
+    width: 250px;
+    transition: all 0.3s ease;
+}
+
+.filters input:focus {
+    border-color: #00B37E;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 179, 126, 0.5);
 }
 
 .tableWrapper {
@@ -27,21 +43,29 @@ h1 {
 }
 
 .table {
-    width: 94%;
+    width: 100%;
+    max-width: 1350px;
+    margin: 0 auto;
+    margin-left: 6%;
     border-collapse: collapse;
-    margin: 0 auto; 
-    margin-left: 5.3%;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .table th, .table td {
-    padding: 10px;
+    padding: 15px;
     text-align: left;
-    border: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    font-size: 0.9rem;
 }
 
 .table th {
     background-color: #00B37E;
-    color: black;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 .table tr:nth-child(even) {
@@ -49,62 +73,64 @@ h1 {
 }
 
 .table tr:hover {
-    background-color: #c8f7ca;
+    background-color: #e6f7eb;
+    transition: background-color 0.3s ease;
 }
 
 .buttonEdit {
     display: flex;
     align-items: center;
-    justify-content: center; /* Alinha o ícone no centro */
+    justify-content: center;
     background-color: #FFB74D;
     color: #fff;
     border: none;
-    padding: 8px; /* Tamanho de padding ajustado para que fique redondo */
-    border-radius: 50%; /* Faz o botão ficar redondo */
+    padding: 10px;
+    border-radius: 50%;
     cursor: pointer;
-    font-size: 16px;
-    width: 50px; /* Define a largura do botão */
-    height: 50px; /* Define a altura do botão, igual à largura para ser um círculo */
-    transition: all 0.3s ease;
+    font-size: 1rem;
+    width: 40px;
+    height: 40px;
+    transition: transform 0.3s, background-color 0.3s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.buttonEdit:hover{
+.buttonEdit:hover {
     background-color: #FF9800;
-    transform: scale(1.05s);
+    transform: scale(1.1);
 }
 
 .icon {
     font-size: 1.2rem;
-    color: #000; /* Mudança da cor do ícone */
+    color: #000;
 }
 
 .pagination {
     display: flex;
-    justify-content: flex-end;  /* Alinha os botões na horizontal, à direita */
-    align-items: center;
-    width: 15%;
-    gap: 10px;
-    bottom: 20px;  /* Ajuste da distância do fundo */
-    margin-left: 5.3%;
-    margin-bottom: 1%;
+    position: relative;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 20px;
+    width: 6%;
+    left: 7%;
 }
 
 .pageButton {
-    background-color: #ccc;
-    color: white;
+    background-color: #004d40;
+    color: #fff;
     border: none;
     border-radius: 5px;
-    padding: 3px 2px; /* Ajuste do tamanho do botão */
-    font-size: 1rem;
+    padding: 8px 16px;
+    font-size: 0.9rem;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    margin-top: 8%;
 }
 
 .pageButton:hover {
     background-color: #ccc;
     transform: scale(1.05);
+    border-color: #004d40;
+    color: #004d40;
 }
 
 .pageButton:disabled, .disabledButton {
@@ -113,24 +139,98 @@ h1 {
 }
 
 .activePage {
-    background-color: #00B37E;
+    background-color: #004d40;
+    color: #fff;
     font-weight: bold;
     pointer-events: none;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 6px #004d40;
 }
 
-@media (max-width: 600px) {
-    .pageButton {
-        padding: 2px 4px;
-        font-size: 0.6rem;
+/* Responsividade */
+@media (min-width: 1440px) {
+    .container {
+        padding: 40px;
+        max-width: 100%;
+        margin: 0 auto; /* Centraliza a página */
+        /* background-color: #eef2f7; */
+    }
+
+    h1 {
+        font-size: 2.5rem; /* Aumenta o tamanho do título */
+    }
+
+    .filters {
+        justify-content: flex-start;
+        margin-left: 7%;
+        gap: 20px; /* Aumenta o espaçamento entre os filtros */
     }
 
     .filters input {
-        width: 100%;
-        margin: 5px 0;
+        width: 300px; /* Aumenta a largura dos campos */
+        font-size: 1.2rem;
+    }
+
+    .table {
+        max-width: 90%;
+        font-size: 1.1rem; /* Aumenta o tamanho do texto */
+        margin-left: 7%;
+        margin-right: auto; /* Centraliza a tabela */
+    }
+
+    .table th, .table td {
+        padding: 20px; /* Adiciona mais espaço às células */
+    }
+
+    .buttonEdit {
+        width: 50px; /* Botões maiores */
+        height: 50px;
+        font-size: 1.2rem;
     }
 
     .pagination {
-        margin-right: 5px;
+        justify-content: flex-end; /* Alinha à direita */
+        gap: 10px;
+        margin-left: 7%;
+    }
+
+    .pageButton {
+        padding: 10px 20px; /* Botões maiores */
+        font-size: 1rem;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .table th, .table td {
+        padding: 10px;
+        font-size: 0.8rem;
+    }
+
+    .filters input {
+        width: calc(100% - 20px);
+    }
+
+    .pagination {
+        gap: 5px;
+    }
+
+    .pageButton {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .filters input {
+        width: 100%;
+    }
+
+    .table {
+        font-size: 0.75rem;
+    }
+
+    .pageButton {
+        padding: 4px 8px;
+        font-size: 0.7rem;
     }
 }

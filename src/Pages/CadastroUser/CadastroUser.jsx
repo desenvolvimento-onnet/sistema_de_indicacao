@@ -18,46 +18,19 @@ const CadastroUser = () => {
     active: true,
   });
 
-  // const [users, setUsers] = useState([]);
-
-  // useEffect(() => {
-  //   const fetchUsers = async () => {
-  //     try {
-  //       const response = await fetch('http://localhost:5555/collaborator');
-  //       const data = await response.json();
-  //       console.log(data);
-  //       setUsers(data);
-  //     } catch (error) {
-  //       console.error("Erro ao carregar os usuários:", error);
-  //     }
-  //   };
-  //   fetchUsers();
-  // },);
-
-  // const handleChange = (e, isEdit = false) => {
-  //   const { name, value } = e.target;
-  //   if (isEdit) {
-  //     setEditData({ ...editData, [name]: value });
-  //   } else {
-  //     setFormData({ ...formData, [name]: value });
+  // const handleChange = (e) => {
+  //   const { name, value, type, checked } = e.target;
+  //   if(type === 'checkbox'){
+  //     setFormData({...formData, [name]: checked });
+  //   }else{
+  //     setFormData({...formData, [name]: value}); 
   //   }
-  // };
-
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   alert('Usuário cadastrado com sucesso!\n' + JSON.stringify(formData));
-  // };
-
-
-  // const handleEditSubmit = (e) => {
-  //   e.preventDefault();
-  //   alert('Usuário atualizado com sucesso!\n' + JSON.stringify(editData));
+    
   // };
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({...formData, [name]: value}); 
+      const { name, value } = e.target;
+      setFormData({...formData, [name]: value}); 
   };
 
   const handleSubmit = async (e) => {
@@ -169,6 +142,19 @@ const CadastroUser = () => {
                 ))}
               </select>
             </div>
+            {/* <div className={style.campoFormulario}>
+                <label className={style.labelFormulario}>Usuário ativo:</label>
+                <label className={style.switch}>
+                  <input
+                    type='checkbox'
+                    name='active'
+                    checked={formData.active}
+                    onChange={handleChange}
+                  />
+                  <span className={style.slider}></span>
+                </label>
+            </div> */}
+
             <button type="submit" className={style.botaoSubmitCadastro}>
               Cadastrar
             </button>

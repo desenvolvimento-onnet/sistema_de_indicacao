@@ -115,22 +115,29 @@ const Registros = () => {
         })
             .then(async (response) => {
                 console.log('Response status:', response.status);
+                
                 if (response.status === 204 || response.headers.get('content-length') === '0') {
-                    return {}; // Para lidar com respostas sem corpo.
+                    console.log('Resposta sem conteúdo, atualização bem-sucedida');
+                    return {}; // Retorna um objeto vazio
                 }
-                return response.json();
+                // Caso contrário, tenta parsear o JSON
+                const data = await response.json();
+                return data;
             })
-            .then(() => {
-                setUsers((prevIndications) =>
-                    prevIndications.map((user) =>
-                        user.id === updateIndication.id ? updateIndication : user
-                    )
-                );
-                setIsModalOpen(false);
-                setSaving(false);
+            .then((data) => {
+                if (data) {
+                    console.log('Indicação atualizada com sucesso', data);
+                    setUsers((prevIndications) =>
+                        prevIndications.map((user) =>
+                            user.id === updateIndication.id ? { ...user, ...updateIndication } : user
+                        )
+                    );
+                    setIsModalOpen(false);
+                    setSaving(false);
+                }
             })
             .catch((error) => {
-                console.error('Erro na requisição:', error);
+                console.error('Erro na requisição:', error.message);
                 setSaving(false);
             });
     };
@@ -203,6 +210,7 @@ const Registros = () => {
                                         </tr>
                                     ))}
                                 </tbody>
+
                             </table>
                         </div>
                         <div className={styles.pagination}>
@@ -238,6 +246,7 @@ const Registros = () => {
                                 &raquo;
                             </button>
                         </div>
+                        
                     </>
                 )}
             </div>
