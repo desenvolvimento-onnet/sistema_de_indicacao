@@ -33,7 +33,7 @@ const Home = () => {
                 // console.log(token);
                 sessionStorage.setItem('userEmail', email);
                 // console.log('E-mail: ', email);
-                navigate('/Formulario');
+                navigate('/Registros');
             } else {
                 setError('Erro ao autenticar. Token não recebido.');
             }

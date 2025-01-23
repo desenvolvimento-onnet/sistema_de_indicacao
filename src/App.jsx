@@ -21,19 +21,20 @@ function App() {
         <Route path="/" element={<Navigate to="/Home" />} />
 
         {/* Rotas protegidas */}
-        <Route
-          path="/Formulario"
-          element={
-            <PrivateRoute>
-              <Formulario />
-            </PrivateRoute>
-          }
-        />
+        
         <Route
           path="/Registros"
           element={
             <PrivateRoute>
               <Registros />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/Formulario"
+          element={
+            <PrivateRoute>
+              <Formulario />
             </PrivateRoute>
           }
         />
