@@ -135,38 +135,41 @@ const EditarCadastro = () => {
                                 onChange={(e) => setSearchEmail(e.target.value)}
                             />
                         </div>
-                        <table className={styles.table}>
-                            <thead>
-                                <tr>
-                                    <th>Nome</th>
-                                    <th>Nome Abreviado</th>
-                                    <th>E-mail</th>
-                                    <th>Role</th>
-                                    <th>Situação</th>
-                                    <th className={styles.linhaEditar}>Editar</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {currentUsers.map((user) => (
-                                    <tr key={user.id}>
-                                        <td>{user.name}</td>
-                                        <td>{user.shortName}</td>
-                                        <td>{user.email}</td>
-                                        <td>{user.role}</td>
-                                        <td>{user.active ? 'Ativo' : 'Inativo'}</td>
-                                        <td className={styles.botaoEditar}>
-                                            <button
-                                                onClick={() => handleEditClick(user)}
-                                                className={styles.buttonEdit}
-                                            >
-                                                <FontAwesomeIcon icon={faEdit} />
-                                            </button>
-                                        </td>
+                        <div className={styles.tableWrapper}>
+                            <table className={styles.table}>
+                                <thead>
+                                    <tr>
+                                        <th>Nome</th>
+                                        <th>Nome Abreviado</th>
+                                        <th>E-mail</th>
+                                        <th>Role</th>
+                                        <th>Situação</th>
+                                        <th className={styles.linhaEditar}>Editar</th>
                                     </tr>
-                                ))}
-                            </tbody>
-                        </table>
-                        <div className={styles.pagination}>
+                                </thead>
+                                <tbody>
+                                    {filteredUsers.map((user) => (
+                                        <tr key={user.id}>
+                                            <td>{user.name}</td>
+                                            <td>{user.shortName}</td>
+                                            <td>{user.email}</td>
+                                            <td>{user.role}</td>
+                                            <td>{user.active ? 'Ativo' : 'Inativo'}</td>
+                                            <td className={styles.botaoEditar}>
+                                                <button
+                                                    onClick={() => handleEditClick(user)}
+                                                    className={styles.buttonEdit}
+                                                >
+                                                    <FontAwesomeIcon icon={faEdit} />
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        {/* <div className={styles.pagination}>
                             <button
                                 onClick={() => setCurrentPage(1)}
                                 disabled={currentPage === 1}
@@ -196,7 +199,7 @@ const EditarCadastro = () => {
                             >
                                 &raquo;
                             </button>
-                        </div>
+                        </div> */}
                     </>
                 )}
             </div>

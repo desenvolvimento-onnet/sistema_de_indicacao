@@ -1,8 +1,6 @@
 .container {
     padding: 20px;
     font-family: 'Roboto', sans-serif;
-    /* background-color: #f7f9fc; */
-    overflow: auto;
     height: 100%;
 }
 
@@ -39,15 +37,16 @@ h1 {
 }
 
 .tableWrapper {
-    overflow-x: auto;
+    display: inline-block; /* Ajusta ao tamanho do conteúdo */
+    max-height: 500px; /* Altura máxima (se necessário) */
+    overflow-y: auto; /* Ativa rolagem vertical */
+    padding: 0; /* Remove o espaçamento interno */
+    margin: 0 auto; /* Centraliza no contêiner pai */
 }
 
 .table {
-    width: 100%;
-    max-width: 1350px;
-    margin: 0 auto;
-    margin-left: 6%;
-    border-collapse: collapse;
+    width: 100%; /* Garante que a tabela respeite o tamanho do contêiner */
+    border-collapse: collapse; /* Remove espaços extras entre as bordas */
     background-color: #fff;
     border-radius: 8px;
     overflow: hidden;
@@ -55,7 +54,7 @@ h1 {
 }
 
 .table th, .table td {
-    padding: 15px;
+    padding: 8px;
     text-align: left;
     border-bottom: 1px solid #ddd;
     font-size: 0.9rem;
@@ -106,12 +105,11 @@ h1 {
 
 .pagination {
     display: flex;
-    position: relative;
     justify-content: center;
     gap: 6px;
     margin-top: 20px;
     width: 6%;
-    left: 7%;
+    left: 10%;
 }
 
 .pageButton {
@@ -177,6 +175,11 @@ h1 {
         margin-right: auto; /* Centraliza a tabela */
     }
 
+    .tableWrapper{
+        width: 100%;
+        max-height: 700px;
+    }
+
     .table th, .table td {
         padding: 20px; /* Adiciona mais espaço às células */
     }
@@ -209,15 +212,6 @@ h1 {
     .filters input {
         width: calc(100% - 20px);
     }
-
-    .pagination {
-        gap: 5px;
-    }
-
-    .pageButton {
-        padding: 6px 12px;
-        font-size: 0.8rem;
-    }
 }
 
 @media (max-width: 480px) {
@@ -227,10 +221,5 @@ h1 {
 
     .table {
         font-size: 0.75rem;
-    }
-
-    .pageButton {
-        padding: 4px 8px;
-        font-size: 0.7rem;
     }
 }

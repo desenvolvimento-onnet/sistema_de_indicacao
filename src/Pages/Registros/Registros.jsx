@@ -188,7 +188,7 @@ const Registros = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {currentUsers.map((user) => (
+                                    {filteredUsers.map((user) => (
                                         <tr key={user.id}>
                                             <td>{user.name}</td>
                                             <td>{user.indicatedBy}</td>
@@ -210,10 +210,10 @@ const Registros = () => {
                                         </tr>
                                     ))}
                                 </tbody>
-
                             </table>
                         </div>
-                        <div className={styles.pagination}>
+
+                        {/* <div className={styles.pagination}>
                             <button
                                 onClick={() => paginate(1)}
                                 disabled={currentPage === 1}
@@ -245,7 +245,7 @@ const Registros = () => {
                             >
                                 &raquo;
                             </button>
-                        </div>
+                        </div> */}
                         
                     </>
                 )}

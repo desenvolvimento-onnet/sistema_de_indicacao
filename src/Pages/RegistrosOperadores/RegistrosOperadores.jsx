@@ -115,7 +115,7 @@ const RegistrosOperadores = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {currentUsers.map(user => (
+                                    {filteredUsers.map(user => (
                                         <tr key={user.id}>
                                             <td>{user.name}</td>
                                             <td>{user.indicatedBy}</td>
@@ -131,7 +131,7 @@ const RegistrosOperadores = () => {
                                 </tbody>
                             </table>
                         </div>
-                        <div className={styles.pagination}>
+                        {/* <div className={styles.pagination}>
                             <button
                                 onClick={() => paginate(1)}
                                 disabled={currentPage === 1}
@@ -159,7 +159,7 @@ const RegistrosOperadores = () => {
                             >
                                 &raquo;
                             </button>
-                        </div>
+                        </div> */}
                     </>
                 )}
             </div>

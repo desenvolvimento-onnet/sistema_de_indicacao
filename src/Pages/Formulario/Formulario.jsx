@@ -206,20 +206,21 @@ const Formulario = () => {
                                 required
                             />
                         </div>
+                        <div className={styles['form-group']}>
+                            <label htmlFor="city">Cidade:</label>
+                            <input
+                                type="text"
+                                id="city"
+                                name="city"
+                                value={formData.city}
+                                onChange={handleChange}
+                                maxLength='50'
+                                required
+                            />
+                        </div>
                     </div>
                     
-                    <div className={styles['form-group']}>
-                        <label htmlFor="city">Cidade:</label>
-                        <input
-                            type="text"
-                            id="city"
-                            name="city"
-                            value={formData.city}
-                            onChange={handleChange}
-                            maxLength='50'
-                            required
-                        />
-                    </div>
+                    
 
                     {/* Select de nomes */}
                     <div className={styles['form-group']}>

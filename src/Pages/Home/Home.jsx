@@ -3,6 +3,8 @@ import styles from './Home.module.css';
 import logo from '../../images/logo.webp';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Lottie from 'lottie-react';
+import animationData from '../../assets/animations/Animation.json';
 
 const Home = () => {
     const navigate = useNavigate();
@@ -59,7 +61,8 @@ const Home = () => {
             <div className={styles.content}>
                 <div className={styles.left}>
                     <div className={styles.logo_container}>
-                        <img src={logo} alt="Logo OnNet" />
+                        {/* <img src={logo} alt="Logo OnNet" /> */}
+                        <Lottie animationData={animationData} loop={true}/>
                     </div>
                 </div>
                 <div className={styles.right}>
@@ -98,9 +101,9 @@ const Home = () => {
                                     <button type="submit">Entrar</button>
                                 </div>
                             </form>
-                            <div className={styles.linkContainer}>
+                            {/* <div className={styles.linkContainer}>
                                 <Link to="/cadastro">Não tem uma conta? Cadastre-se</Link>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>

@@ -1,13 +1,17 @@
+:root {
+  --green-300: #00B37E; /* Definição da cor principal */
+}
+
 .modalOverlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.6); /* Fundo mais escuro */
+  background: rgba(0, 0, 0, 0.6); /* Fundo escuro com opacidade */
   z-index: 1000;
-  backdrop-filter: blur(5px); /* Adiciona desfoque ao fundo */
-  animation: fadeIn 0.3s ease-in-out; /* Animação de entrada */
+  backdrop-filter: blur(8px); /* Desfoque elegante no fundo */
+  animation: fadeIn 0.3s ease-in-out;
 }
 
 @keyframes fadeIn {
@@ -24,120 +28,115 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: #fff;
+  background: linear-gradient(135deg, #fff, #f9f9f9); /* Fundo gradiente sutil */
   padding: 2rem;
-  border-radius: 12px;
-  width: 90%; /* Mais responsivo em telas pequenas */
-  height: auto;
-  min-height: 30%;
-  max-width: 800px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  z-index: 1001;
-  animation: slideIn 0.3s ease-in-out;
+  border-radius: 16px; /* Cantos mais arredondados */
+  width: 90%;
+  max-width: 900px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Sombra mais forte */
+  animation: slideIn 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* Animação suave */
 }
 
 @keyframes slideIn {
   from {
     transform: translate(-50%, -60%);
+    opacity: 0;
   }
   to {
     transform: translate(-50%, -50%);
+    opacity: 1;
   }
 }
 
 .campoFormulario {
   margin-bottom: 20px;
-  font-size: 1rem;
 }
 
 .campoFormulario select {
   width: 100%;
   padding: 0.8rem;
-  border: 1px solid #ddd;
-  border-radius: 6px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
   font-size: 1rem;
   color: #333;
-  transition: border-color 0.2s;
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 .campoFormulario select:focus {
   border-color: var(--green-300);
   outline: none;
+  box-shadow: 0 0 8px rgba(0, 179, 126, 0.6);
 }
 
 .labelFormulario {
-  display: block;
   font-size: 1rem;
-  margin-bottom: 8px;
   font-weight: bold;
   color: #444;
+  margin-bottom: 8px;
 }
 
 .form-group-inline {
   display: flex;
   justify-content: space-between;
   gap: 20px;
-  flex-wrap: wrap; /* Melhor para dispositivos menores */
+  flex-wrap: wrap; /* Ajusta em dispositivos menores */
 }
 
 .botaoSalvarEdicao {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   background: var(--green-300);
   color: white;
-  border: 1px solid var(--green-300);
-  border-radius: 8px;
-  height: 45px;
-  width: 100%;
-  max-width: 200px; /* Define um tamanho máximo */
-  padding: 0 1.5rem;
+  border: none;
+  border-radius: 10px;
+  padding: 0.8rem 1.5rem;
   font-weight: bold;
-  font-size: 1.2rem;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  text-decoration: none;
+  font-size: 1rem;
+  text-transform: uppercase;
   cursor: pointer;
-  margin-top: 1rem;
   transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .botaoSalvarEdicao:hover {
-  background-color: white;
+  background: #fff;
   color: var(--green-300);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  border: 2px solid var(--green-300);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 179, 126, 0.4);
 }
 
-/* Media Queries para telas menores */
+/* Responsividade */
 @media (max-width: 768px) {
   .modalContent {
-    width: 95%; /* Mais estreito para dispositivos menores */
-    height: 50%;
-    padding: 1.5rem; /* Reduz o padding */
+    width: 95%;
+    padding: 1.5rem;
   }
 
   .form-group-inline {
-    flex-direction: column; /* Alinha os itens em coluna */
+    flex-direction: column;
     gap: 15px;
   }
 
   .botaoSalvarEdicao {
     font-size: 1rem;
-    max-width: 100%; /* Remove o tamanho máximo fixo */
+    width: 100%;
   }
 }
 
 @media (max-width: 480px) {
   .modalContent {
-    padding: 1rem; /* Padding menor em telas muito pequenas */
+    padding: 1rem;
   }
 
   .campoFormulario select {
     font-size: 0.9rem;
-    padding: 0.6rem;
+    padding: 0.7rem;
   }
 
   .botaoSalvarEdicao {
     font-size: 0.9rem;
-    padding: 0 1rem;
+    padding: 0.6rem 1rem;
   }
 }

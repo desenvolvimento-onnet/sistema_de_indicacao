@@ -1,137 +1,175 @@
-
-/* Estilização do container do formulário */
-.form-container {
+:root {
+    --green-300: #00B37E; /* Cor principal para elementos ativos */
+    --white: #fff;
+  }
+  
+  .form-container {
     display: flex;
-    flex-direction: row;  /* Organiza os elementos em linha (ao lado) */
-    justify-content: space-between;  /* Centraliza o conteúdo horizontalmente */
-    align-items: center;  /* Centraliza o conteúdo verticalmente */
-    min-height: 100vh;  /* Garante que o contêiner ocupe toda a altura da tela */
-    margin-top: 0;
-    margin: 0;
-    gap: 50px;  /* Espaçamento entre o texto e o formulário */
-    width: 90%;
-    margin-left: 10%;
-    /* background-color: #f7f9fc; */
-}
-
-/* Container de texto */
-.text-container {
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-    text-align: justify;
-    max-width: 500px;
+    min-height: 100vh;
+    width: 100%;
+    margin: 0 auto;
+    gap: 50px;
+    padding: 2rem;
+  }
+  
+  .text-container {
+    max-width: 630px;
     flex: 1;
-    font-family: Garamond;
+    font-family: 'Georgia', serif; /* Família de fonte sofisticada */
+    font-size: 1.2rem;
+    line-height: 1.5;
+    color: #333;
+    margin-left: 6%;
+    border: 1px solid transparent; /* Sem contorno visível */
+  }
+  
+  .text-container ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-top: 1rem;
     font-size: 1.3rem;
-    margin-left: 10%;
-}
-
-/* Estilo para a lista não ordenada (ul) */
-.text-container ul {
-    list-style-type: disc; /* Certifica-se de que os bullet points aparecem */
-    padding-left: 20px; /* Adiciona um recuo à esquerda para os bullet points */
-}
-
-/* Estilo para os itens da lista (li) */
-.text-container ul li {
-    font-size: 1.3rem; /* Ajusta o tamanho da fonte, se necessário */
-    margin-bottom: 8px; /* Espaçamento entre os itens */
-}
-
-/* Estilização do formulário */
-.form {
+  }
+  
+  .text-container ul li {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  
+  .form {
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: 500px;  /* Largura máxima proporcional */
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #fff;
-    margin-right: 15%;
-}
-
-/* Estilização dos grupos de campo */
-.form-group {
-    margin-bottom: 15px;
-    font-size: 1rem;
-}
-
-.form-group label {
+    max-width: 700px;
+    margin-right: 2%;
+    padding: 2rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  .form-group label {
     display: block;
     font-size: 1rem;
-    margin-bottom: 8px;
-    color: black;
     font-weight: bold;
-}
-
-/* Estilização de campos com máscara */
-.input-mask {
+    margin-bottom: 0.5rem;
+    color: #555;
+  }
+  
+  .input-mask {
     width: 100%;
-    padding: 12px;
+    padding: 0.75rem;
     font-size: 1rem;
     border: 1px solid #ccc;
     border-radius: 8px;
-    box-sizing: border-box;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.input-mask:focus {
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  
+  .input-mask:focus {
     outline: none;
-    border-color: #00B37E;
-    box-shadow: 0 0 6px #00B37E;
-}
-
-/* Estilização do grupo de campos em linha */
-.form-group-inline {
+    border-color: var(--green-300);
+    box-shadow: 0 0 8px rgba(0, 179, 126, 0.5);
+  }
+  
+  .form-group-inline {
     display: flex;
     justify-content: space-between;
     gap: 20px;
     flex-wrap: wrap;
-}
-
-/* Estilização do grupo de input */
-.inline-group {
+  }
+  
+  .inline-group {
     flex: 1;
-    font-size: 1rem;
-}
-
-/* Alinha o botão à direita */
-.form button {
+  }
+  
+  .form button {
     background: var(--green-300);
     color: var(--white);
-    border: 1px solid var(--green-300);
+    border: none;
     border-radius: 50px;
     height: 45px;
-    width: 40%;
     padding: 0 1.5rem;
     font-weight: bold;
-    font-size: 1.5rem;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    text-decoration: none;
+    font-size: 1.2rem;
+    text-transform: uppercase;
     cursor: pointer;
-    transition: color 0.2s, background-color 0.2s;
-    margin-top: 5%;
-    align-self: center;  /* Centraliza o botão dentro do contêiner */
-}
-
-button:hover {
-    background-color: var(--white);
+    transition: background-color 0.3s, color 0.3s, transform 0.2s;
+    align-self: center;
+  }
+  
+  .form button:hover {
+    background: var(--white);
     color: var(--green-300);
-}
-
-/* Responsividade para telas pequenas */
-@media (max-width: 800px) {
+    border: 2px solid var(--green-300);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 179, 126, 0.3);
+  }
+  
+  /* Responsividade */
+  @media (max-width: 1024px) {
     .form-container {
-        flex-direction: column;  /* Em telas menores, coloca o texto acima do formulário */
-        gap: 20px;  /* Reduz o espaço entre os elementos */
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
     }
-
+  
     .text-container {
-        max-width: 100%;
+      max-width: 80%;
+      font-size: 1.3rem;
+      line-height: 1.6;
     }
-
+  
     .form {
-        max-width: 100%;
+      max-width: 90%;
     }
-}
+  }
+  
+  @media (max-width: 768px) {
+    .form-container {
+      padding: 1.5rem;
+      gap: 20px;
+    }
+  
+    .text-container {
+      font-size: 1.1rem;
+      line-height: 1.5;
+      text-align: center;
+    }
+  
+    .form {
+      padding: 1.5rem;
+    }
+  
+    .input-mask {
+      padding: 0.7rem;
+      font-size: 1rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .form-container {
+      padding: 1rem;
+    }
+  
+    .text-container {
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+  
+    .form {
+      padding: 1rem;
+    }
+  
+    .form button {
+      height: 40px;
+      font-size: 0.9rem;
+    }
+  }
+  

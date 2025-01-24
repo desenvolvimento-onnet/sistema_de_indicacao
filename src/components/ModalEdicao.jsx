@@ -20,24 +20,27 @@ const ModalEdicao = ({
         >
             <h2>Editar Usuário Cadastrado</h2>
             <form onSubmit={handleSubmit}>
-                <div className={styles.campoFormulario}>
-                    <label className={styles.labelFormulario}>Nome:</label>
-                    <input
-                        className={styles.inputFormulario}
-                        type="text"
-                        name="name"
-                        defaultValue={selectedUser?.name || ''}
-                    />
+                <div className={styles.inlineGroup}>
+                    <div className={styles.campoFormulario}>
+                        <label className={styles.labelFormulario}>Nome:</label>
+                        <input
+                            className={styles.inputFormulario}
+                            type="text"
+                            name="name"
+                            defaultValue={selectedUser?.name || ''}
+                        />
+                    </div>
+                    <div className={styles.campoFormulario}>
+                        <label className={styles.labelFormulario}>Nome de Exibição:</label>
+                        <input
+                            className={styles.inputFormulario}
+                            type="text"
+                            name="shortName"
+                            defaultValue={selectedUser?.shortName || ''}
+                        />
+                    </div>
                 </div>
-                <div className={styles.campoFormulario}>
-                    <label className={styles.labelFormulario}>Nome de Exibição:</label>
-                    <input
-                        className={styles.inputFormulario}
-                        type="text"
-                        name="shortName"
-                        defaultValue={selectedUser?.shortName || ''}
-                    />
-                </div>
+                
                 <div className={styles.campoFormulario}>
                     <label className={styles.labelFormulario}>E-mail:</label>
                     <input

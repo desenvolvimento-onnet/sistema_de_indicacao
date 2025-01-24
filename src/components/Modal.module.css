@@ -1,13 +1,26 @@
+:root {
+  --green-300: #00B37E; /* Cor principal para o botão e elementos ativos */
+}
+
 .modalOverlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.6); /* Fundo mais escuro */
+  background: rgba(0, 0, 0, 0.7); /* Fundo mais escuro */
   z-index: 1000;
-  backdrop-filter: blur(5px); /* Adiciona desfoque ao fundo */
-  animation: fadeIn 0.3s ease-in-out; /* Animação de entrada */
+  backdrop-filter: blur(8px); /* Desfoque mais pronunciado */
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .modalContent {
@@ -15,20 +28,39 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  width: 50%;
-  max-width: 500px; /* Limita o tamanho máximo */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  z-index: 1001;
+  background: linear-gradient(145deg, #ffffff, #f7f7f7); /* Fundo com gradiente sutil */
+  padding: 2rem;
+  border-radius: 16px; /* Cantos mais arredondados */
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Sombra elegante */
+  animation: slideIn 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
-.campoFormulario{
+
+@keyframes slideIn {
+  from {
+    transform: translate(-50%, -60%);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+  }
+}
+
+.campoFormulario {
   margin-bottom: 20px;
   font-size: 1rem;
 }
 
-.labelFormulario{
+.inlineGroup{
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.labelFormulario {
   display: block;
   font-size: 1rem;
   margin-bottom: 8px;
@@ -36,46 +68,56 @@
   color: #444;
 }
 
-.inputFormulario, 
-.selectFormulario{
+.inputFormulario,
+.selectFormulario {
   width: 100%;
   padding: 0.8rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
   font-size: 1rem;
   color: #333;
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-.selectFormulario{
+.inputFormulario:focus,
+.selectFormulario:focus {
+  border-color: var(--green-300);
+  box-shadow: 0 0 6px rgba(0, 179, 126, 0.6);
+  outline: none;
+}
+
+.selectFormulario {
   cursor: pointer;
 }
 
-.switch{
+/* Estilo para o botão de alternância (switch) */
+.switch {
   position: relative;
   display: inline-block;
   width: 60px;
   height: 34px;
 }
 
-.switch input{
+.switch input {
   opacity: 0;
   width: 0;
   height: 0;
 }
 
-.slider{
+.slider {
   position: absolute;
   cursor: pointer;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: red;
-  transition: .4s;
+  background-color: #ddd;
+  transition: background-color 0.4s;
   border-radius: 34px;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.slider:before{
+.slider:before {
   position: absolute;
   content: "";
   height: 26px;
@@ -83,43 +125,90 @@
   left: 4px;
   bottom: 4px;
   background-color: white;
-  transition: .4s;
+  transition: transform 0.4s;
   border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-/*Mudar a cor do botão quando ativo*/
-input:checked + .slider{
-  background-color: #40f249;
+input:checked + .slider {
+  background-color: var(--green-300);
 }
 
-input:checked + .slider:before{
+input:checked + .slider:before {
   transform: translateX(26px);
 }
 
-.botaoSalvarEdicao{
+.botaoSalvarEdicao {
   display: flex;
   align-items: center;
   justify-content: center;
   background: var(--green-300);
   color: white;
-  border: 1px solid var(--green-300);
+  border: none;
   border-radius: 10px;
-  height: 40px;
-  width: 100%;
-  padding: 0 1.5rem;
+  padding: 0.8rem 1.5rem;
   font-weight: bold;
-  font-size: 1.5rem;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  text-decoration: none;
+  font-size: 1.2rem;
   cursor: pointer;
-  transition: color 0.2s, background-color 0.25;
-  margin-top: 5%;
-  align-self: right;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-.botaoSalvarEdicao:hover{
-  background-color: white;
+.botaoSalvarEdicao:hover {
+  background: white;
   color: var(--green-300);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  border: 2px solid var(--green-300);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 179, 126, 0.4);
 }
 
+/* Responsividade */
+@media (max-width: 768px) {
+  .modalContent {
+    width: 95%;
+    padding: 1.5rem;
+  }
+
+  .botaoSalvarEdicao {
+    font-size: 1rem;
+    width: 100%;
+  }
+
+  .switch {
+    width: 50px;
+    height: 28px;
+  }
+
+  .slider:before {
+    height: 22px;
+    width: 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .modalContent {
+    padding: 1rem;
+  }
+
+  .inputFormulario,
+  .selectFormulario {
+    font-size: 0.9rem;
+    padding: 0.6rem;
+  }
+
+  .botaoSalvarEdicao {
+    font-size: 0.9rem;
+    padding: 0.6rem 1rem;
+  }
+
+  .switch {
+    width: 45px;
+    height: 24px;
+  }
+
+  .slider:before {
+    height: 20px;
+    width: 20px;
+  }
+}
